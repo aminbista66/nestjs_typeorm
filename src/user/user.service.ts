@@ -21,4 +21,14 @@ export class UserService {
   findAll() {
     return this.usersRepository.find();
   }
+
+  getOne(id: number) {
+    return this.usersRepository.findOneBy({ id });
+  }
+
+  async updateOne(id: number) {}
+
+  removeOne(id: number){
+    return this.usersRepository.delete(id)
+  }
 }

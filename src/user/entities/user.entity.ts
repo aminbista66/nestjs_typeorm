@@ -1,10 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { AbstractEntity } from '../../database/abstract.entity';
 
 @Entity('authuser')
-export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class User extends AbstractEntity<User> {
   @Column({ unique: true, length: 150, nullable: false })
   username: string;
 
@@ -19,11 +17,4 @@ export class User {
 
   @Column({ default: new Date() })
   createdAt: Date;
-
-  constructor(user: Partial<User>) {
-    Object.assign(this, user)
-  }
 }
-
-@Entity()
-export class Test{}
